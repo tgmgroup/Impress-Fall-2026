@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <meta
+			name="viewport"
+			content="width=1920, height=1080, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>-->
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Impress Magazine - Fall, 2026</title>
+		<link rel="stylesheet" href="/assets/css/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/nav-images/logo.png" />
+		<link id="favicon" rel="shortcut icon" href="/assets/nav-images/logo.png" />
+
+		<link href="/assets/css/styles-slideshow.css" rel="stylesheet" />
+
+		<link href="/assets/css/styles-tooltip.css" rel="stylesheet" />
+		<link href="/assets/css/styles-modal.css" rel="stylesheet" />
+		<link href="/assets/css/styles-modal-split.css" rel="stylesheet" />
+		<link href="/assets/css/styles-audio-player.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="/assets/scripts/scripts.js"></script>
+
+		<script>
+			(function () {
+				try {
+					const savedTheme = localStorage.getItem("theme");
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
+					if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+						document.documentElement.classList.add("dark");
+					} else if (savedTheme === "light") {
+						document.documentElement.classList.remove("dark");
+					} else {
+						// Default to dark if nothing set and system isn't dark
+						document.documentElement.classList.add("dark");
+					}
+				} catch (e) {
+					console.error("Error applying initial theme class:", e);
+				}
+			})();
+		</script>
+	</head>
+	<body>
+		<nav id="icon-nav">
+			<a
+				href="https://impress.isesaki.in"
+				aria-label="Impress Magazine Gallery"
+				class="slide-nav-trigger"
+				data-target-slide="slide-alpha"
+				>&#128213;</a
+			>
+			<a
+				href="index.html"
+				aria-label="Front Cover"
+				class="slide-nav-trigger"
+				data-target-slide="slide-beta"
+				>&#x23EA;</a
+			>
+			<a href="1.html" aria-label="1">&#x0031;</a>
+			<a href="1.html" aria-label="2">&#x0032;</a>
+			<a href="3.html" aria-label="3">&#x0033;</a>
+			<a href="3.html" aria-label="4">&#x0034;</a>
+			<a href="5.html" aria-label="5">&#x0035;</a>
+			<a href="5.html" aria-label="6">&#x0036;</a>
+			<a href="cover.html" aria-label="Back Cover">&#x23E9;</a>
+			<a href="about.html" aria-label="About">&#128209;</a>
+			<button id="theme-toggle" aria-label="Switch theme"></button>
+
+			<button id="snow-toggle" aria-label="Toggle Snowflakes">&#x2744;</button>
+		</nav>
+
+		<main id="hero">
+			<div id="container">
+				<!-- Your website content goes here -->
+
+				<div class="item sidebar sidebar-left"></div>
+
+				<div class="item gap-left"></div>
+
+				<div
+					class="item content-center"
+					id="page-content"
+					style="
+						background-image: url(&quot;/assets/Web/page056.webp&quot;);
+						background-size: contain;
+						background-position: center;
+						background-repeat: no-repeat;
+					"
+					data-page-number="5"
+					data-prev-page="3.html"
+					data-next-page="cover.html"
+					data-landscape-bg="/assets/Web/page056.webp"
+					data-portrait-left="/assets/Web/page05.webp"
+					data-portrait-right="/assets/Web/page06.webp"
+				>
+					<div class="left-content">
+						<!-- Audio -->
+
+						<audio id="audio1-1" class="playondemand">
+							<!-- empty audio, just used to open the modal -->
+							<source src="./assets/audio/audio5-1.mp3" type="audio/mp3" />
+						</audio>
+						<audio id="audio1-2" class="playondemand">
+							<!-- empty audio, just used to open the modal -->
+							<source src="./assets/audio/audio5-1.mp3" type="audio/mp3" />
+						</audio>
+					</div>
+				</div>
+
+				<div class="item gap-right"></div>
+				<div class="item sidebar sidebar-right">
+					<!-- Buttons for Intro Text -->
+
+					<button
+						class="center-items right-nav-buttons clickable"
+						type="button"
+						onClick="PlayAndShowWithNav('audio1-1', 'text1-1', 'play1-1', 'prev-portrait', 'next-portrait')"
+					>
+						<img
+							id="play1-1"
+							class="audio-button-image clickable"
+							src="/assets/nav-images/play-g79150a13d_1280.png"
+						/>
+						<h6 style="margin: auto">Dangers of fall</h6>
+					</button>
+
+					<button
+						class="center-items right-nav-buttons clickable"
+						type="button"
+						onClick="PlayAndShowWithNav('audio1-2', 'text1-2', 'play1-2', 'prev-portrait', 'next-portrait')"
+					>
+						<img
+							id="play1-2"
+							class="audio-button-image clickable"
+							src="/assets/nav-images/play-g79150a13d_1280.png"
+						/>
+						<h6 style="margin: auto">Yotsuba's Favorite Pets</h6>
+					</button>
+				</div>
+			</div>
+
+			<div class="items hidden-text" id="text1-1">
+				<!-- Modal content -->
+				<div class="modal-content-slideshow">
+					<div class="modal-header">
+						<span
+							class="close clickable"
+							onClick="ResetPlayAndShowWithNav('audio1-1', 'text1-1', 'play1-1','prev-portrait', 'next-portrait')"
+							>&times;</span
+						>
+					</div>
+
+					<div class="modal-body" style="display: flex">
+						<!-- Add the image slideshow here -->
+						<div id="slideshow-container2" class="slideshow-container">
+							<!-- Slides -- Change for SlideShow1 or 2 -->
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/heat.png"
+											class="slide-image"
+											alt="fall Heat"
+										/>
+									</div>
+									<div class="caption-container" style="vertical-align: middle">
+										<br /><br />
+										<p
+											style="
+												font-size: 2rem;
+												line-height: 1.5;
+												text-indent: 1rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												fall is a great time to have fun! No school, no tests,
+												and no homework!
+												<span class="tooltiptext"
+													>夏は楽しむのに最高の季節です！学校もテストも宿題もありません！</span
+												>
+											</span>
+										</p>
+										<br />
+										<p
+											style="
+												font-size: 2rem;
+												line-height: 1.5;
+												text-indent: 1rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												But fall can be a dangerous time, too. Read about these
+												common fall dangers, then answer this question: Do you
+												think these common things are really that dangerous?
+												<span class="tooltiptext"
+													>しかし、夏は危険な季節でもあります。これらのよくある夏の危険について読み、次の質問に答えてみましょう：これらの身近なものは、本当にそれほど危険だと思いますか？</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">1 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/heat.png"
+											class="slide-image"
+											alt="fall Heat"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Outdoor Sports</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">489,000</h3>
+										<br />
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												About 489,000 people globally die each year from the
+												heat. Drink lots of water and take a lot of breaks when
+												you're doing outdoor sports!
+												<span class="tooltiptext"
+													>世界中で毎年約48万9000人が暑さのために亡くなっています。屋外でスポーツをするときは、水をたくさん飲み、しっかり休憩を取りましょう！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">2 / 7</div>
+									</div>
+								</div>
+							</div>
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/swimming.jpg"
+											class="slide-image"
+											alt="Swimming"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Swimming</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">300,000</h3>
+										<br />
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Around 300,000 people die each year globally from
+												drowning in seas, rivers, and lakes. Swimming is a lot
+												of fun but be careful, especially if you're not swimming
+												in a swimming pool!
+												<span class="tooltiptext"
+													>世界中で毎年約30万人が海、川、湖での溺水により亡くなっています。水泳はとても楽しいですが、特にスイミングプール以外で泳ぐときは注意してください！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">3 / 7</div>
+									</div>
+								</div>
+							</div>
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/trampoline.png"
+											class="slide-image"
+											alt="Trampolines"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Trampolines and Playgrounds</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">300,000</h3>
+										<br />
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Over 300,000 people go to the hospital each year in the
+												USA after falling from trampolines and playground
+												equipment. Have fun, but watch out!
+												<span class="tooltiptext"
+													>アメリカでは毎年30万人以上の人々が、トランポリンや遊具からの転落により病院へ行っています。楽しんで、でも気をつけてください！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">4 / 7</div>
+									</div>
+								</div>
+							</div>
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/tripping.jpg"
+											class="slide-image"
+											alt="Tripping over Pets"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Pets</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">86,000</h3>
+										<br />
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												About 86,000 people in the USA are injured after
+												tripping and falling over a pet or pet toy. Watch where
+												you step!
+												<span class="tooltiptext"
+													>アメリカでは、ペットやペットのおもちゃにつまずいて転倒し、約8万6000人が怪我をしています。足元に注意してください！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">5 / 7</div>
+									</div>
+								</div>
+							</div>
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/5-Dangers/cycling.jpg"
+											class="slide-image"
+											alt="Cycling"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Cycling</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">50,000</h3>
+										<br />
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Around 50,000 cyclists die in accidents each year in the
+												world. Make sure to wear your helmet!
+												<span class="tooltiptext"
+													>世界中で毎年約5万人のサイクリストが事故で亡くなっています。必ずヘルメットを着用しましょう！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">6 / 7</div>
+									</div>
+								</div>
+							</div>
+							<div class="mySlides1">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/dogs.jpg"
+											class="slide-image"
+											alt="Dogs"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<p
+											style="
+												font-size: 2rem;
+												line-height: 1.5;
+												text-indent: 1rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												What did you think about these common dangers? Did you
+												think they were really that dangerous before you read
+												it? And did your opinion change after reading about
+												them?
+												<span class="tooltiptext"
+													>これらのよくある危険についてどう思いましたか？読む前は、本当にそれほど危険だと思っていましたか？そして、それらについて読んだ後、あなたの考えは変わりましたか？</span
+												>
+											</span>
+										</p>
+										<br />
+										<p
+											style="
+												font-size: 2rem;
+												line-height: 1.5;
+												text-indent: 1rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												One of the dangers was pets. Do you think they're really
+												that dangerous? Read the next page to find out about
+												Yotsuba Gakuen's favorite pets and their real dangers.
+												<span class="tooltiptext"
+													>危険の1つはペットでした。それらが本当にそれほど危険だと思いますか？次のページを読んで、四ツ葉学園で人気のペットとその本当の危険性について確かめてみましょう。</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">7 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Navigation buttons -- Change for SlideShow1 or 2 -->
+							<a class="prev" onclick="plusSlides(1, -1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+
+							<br />
+						</div>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<!-- Thumbnails -- Change for SlideShow1 or 2 -->
+						<div class="thumbnail-container">
+							<img
+								src="/assets/Web/5-Dangers/heat.png"
+								class="thumbnail1 thumbnail"
+								alt="fall Heat"
+								onclick="currentSlide(1, 1)"
+							/>
+							<img
+								src="/assets/Web/5-Dangers/heat.png"
+								class="thumbnail1 thumbnail"
+								alt="fall Heat"
+								onclick="currentSlide(1, 2)"
+							/>
+							<img
+								src="/assets/Web/5-Dangers/swimming.jpg"
+								class="thumbnail1 thumbnail"
+								alt="Swimming"
+								onclick="currentSlide(1, 3)"
+							/>
+							<img
+								src="/assets/Web/5-Dangers/trampoline.png"
+								class="thumbnail1 thumbnail"
+								alt="Trampolines"
+								onclick="currentSlide(1, 4)"
+							/>
+							<img
+								src="/assets/Web/5-Dangers/tripping.jpg"
+								class="thumbnail1 thumbnail"
+								alt="Tripping over Pets"
+								onclick="currentSlide(1, 5)"
+							/>
+							<img
+								src="/assets/Web/5-Dangers/cycling.jpg"
+								class="thumbnail1 thumbnail"
+								alt="Cycling"
+								onclick="currentSlide(1, 6)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/dogs.jpg"
+								class="thumbnail1 thumbnail"
+								alt="Dogs"
+								onclick="currentSlide(1, 7)"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="items hidden-text" id="text1-2">
+				<!-- Modal content -->
+				<div class="modal-content-slideshow">
+					<div class="modal-header">
+						<span
+							class="close clickable"
+							onClick="ResetPlayAndShowWithNav('audio1-2', 'text1-2', 'play1-2','prev-portrait', 'next-portrait')"
+							>&times;</span
+						>
+					</div>
+
+					<div class="modal-body" style="display: flex">
+						<!-- Add the image slideshow here -->
+						<div id="slideshow-container2" class="slideshow-container">
+							<!-- Slides -- Change for SlideShow1 or 2 -->
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/fish.jpg"
+											class="slide-image"
+											alt="Goldfish"
+										/>
+									</div>
+									<div class="caption-container" style="vertical-align: middle">
+										<br /><br />
+										<span class="tooltip">
+											<p
+												style="
+													font-size: 2rem;
+													line-height: 1.5;
+													text-align: center;
+												"
+											>
+												Do you like animals? <br />Do you have any pets?
+											</p>
+											<span class="tooltiptext"
+												>動物は好きですか？ ペットを飼っていますか？</span
+											>
+										</span>
+										<br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Some people really like animals. The Yotsuba Gakuen
+												English Club likes animals, too, and they wrote about
+												their dream pets. Read on and see what animals they
+												like, and what dangers those animals pose, too!
+												<span class="tooltiptext"
+													>動物がとても好きな人もいます。四ツ葉学園英語部も動物が好きで、夢のペットについて書きました。読み進めて、彼らがどんな動物が好きか、そしてそれらの動物がどのような危険をもたらすかも見てみましょう！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">1 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/fish.jpg"
+											class="slide-image"
+											alt="Goldfish"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Goldfish</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">Popularity: 12.5%</h3>
+										<br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Student: They’re not difficult to take care of, and
+												they’re cute!
+												<span class="tooltiptext"
+													>生徒：世話が難しくないし、かわいいです！
+												</span>
+											</span>
+										</p>
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Teacher: But watch out! Around 3,300 people are injured
+												in the USA each year by fish tanks.
+												<span class="tooltiptext">
+													先生：でも気をつけて！アメリカでは毎年約3,300人が水槽によって怪我をしています。</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">2 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/snake.jpg"
+											class="slide-image"
+											alt="Snake"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Snakes</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">Popularity: 12.5%</h3>
+										<br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Student: I just like snakes!<span class="tooltiptext"
+													>生徒：ただヘビが好きなんです！
+												</span>
+											</span>
+										</p>
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Teacher: Globally, snakes bite around 5.4 million people
+												every year!<span class="tooltiptext">
+													先生：世界中では、毎年約540万人がヘビに噛まれています！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">3 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/tiger.jpg"
+											class="slide-image"
+											alt="Tiger"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Tigers</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">Popularity: 12.5%</h3>
+										<br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Student: It's a cool animal!
+												<span class="tooltiptext"
+													>生徒：かっこいい動物です！
+												</span>
+											</span>
+										</p>
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Teacher: Tigers are cute but dangerous. In fact, 50
+												people die every year globally from tiger attacks!
+												<span class="tooltiptext">
+													先生：トラはかわいいですが危険です。実際、世界中では毎年50人がトラの襲撃で亡くなっています！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">4 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/trex.jpg"
+											class="slide-image"
+											alt="T-Rex"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Tyrannosaurus Rex</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">Popularity: 12.5%</h3>
+										<br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Student: We can’t have a T-Rex as a pet, but we can keep
+												a small plant-eating dinosaur. It’s totally like the
+												movie
+												<i>Jurassic Park</i>.<span class="tooltiptext"
+													>生徒：Tレックスをペットにする事はできませんが、小さな草食恐竜なら飼えます。まさに映画『ジュラシック・パーク』みたいです。
+												</span>
+											</span>
+										</p>
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Teacher: Wait, have you seen <i>Jurassic Park</i>? On
+												average, 14 people die in each
+												<i>Jurassic Park</i> movie.<span class="tooltiptext"
+													>生徒：Tレックスをペットにする事はできませんが、小さな草食恐竜なら飼えます。まさに映画『ジュラシック・パーク』みたいです。
+												</span>
+											</span>
+										</p>
+
+										<div class="numbertext">5 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/dogs.jpg"
+											class="slide-image"
+											alt="Dogs"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+										<h2><b>Dogs</b></h2>
+										<br />
+										<h3 style="margin-top: 1.5rem">Popularity: 50%</h3>
+										<br />
+
+										<p
+											style="
+												font-size: 1.5rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Students: <br />I love Pomeranians and Shiba lnus. I can
+												take a walk with my dog. I’m happy to have one now.
+												They’re cute! I already have a dog, and it’s
+												friendliness is adorable.
+												<span class="tooltiptext"
+													>生徒たち：ポメラニアンと柴犬が大好きです。犬と散歩に行けます。今飼えてとても幸せです。かわいいです！もう犬を飼っていて、そのフレンドリーさがとても愛くるしいです。</span
+												>
+											</span>
+										</p>
+										<p
+											style="
+												font-size: 1.3rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												Teacher: Remember that pets and pet toys cause 86,000
+												injuries each year in the USA? 88% of those people that
+												fell over pets and pet toys (that 86,000 people) fell
+												over dogs. That’s around 76,000 people!
+												<span class="tooltiptext">
+													先生：アメリカではペットやペットのおもちゃが原因で毎年86,000人が怪我をしているのを覚えていますか？ペットやおもちゃで転んだ86,000人のうち88%は犬につまずいています。それは約76,000人にもなります！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">6 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mySlides2">
+								<div class="slide-content">
+									<div class="image-panel">
+										<img
+											src="/assets/Web/6-Pets/dogs.jpg"
+											class="slide-image"
+											alt="Dogs"
+										/>
+									</div>
+									<div class="caption-container">
+										<br /><br />
+
+										<p
+											style="
+												font-size: 1.7rem;
+												text-indent: 1rem;
+												line-height: 1.7;
+												margin-top: 1.5rem;
+												padding: 0rem;
+												text-align: justify;
+												width: 100%;
+												align-self: stretch;
+											"
+										>
+											<span class="tooltip">
+												What do you think about these animals? Do you like them,
+												and do you think they are they really that dangerous? If
+												you'd like to comment on this topic, send us a message!
+												Let us know if you have any pets, and what your favorite
+												animals are, too!
+												<span class="tooltiptext"
+													>これらの動物についてどう思いますか？彼らが好きですか、そして彼らは本当にそれほど危険だと思いますか？このトピックについてコメントしたい場合は、メッセージを送ってください！ペットを飼っているか、大好きな動物は何か教えてくださいね！</span
+												>
+											</span>
+										</p>
+
+										<div class="numbertext">7 / 7</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Navigation buttons -- Change for SlideShow1 or 2 -->
+							<a class="prev" onclick="plusSlides(2, -1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(2, 1)">&#10095;</a>
+
+							<br />
+						</div>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<!-- Thumbnails -- Change for SlideShow1 or 2 -->
+						<div class="thumbnail-container">
+							<img
+								src="/assets/Web/6-Pets/fish.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Goldfish"
+								onclick="currentSlide(2, 1)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/fish.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Goldfish"
+								onclick="currentSlide(2, 2)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/snake.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Snake"
+								onclick="currentSlide(2, 3)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/tiger.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Tiger"
+								onclick="currentSlide(2, 4)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/trex.jpg"
+								class="thumbnail2 thumbnail"
+								alt="T-Rex"
+								onclick="currentSlide(2, 5)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/dogs.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Dogs"
+								onclick="currentSlide(2, 6)"
+							/>
+							<img
+								src="/assets/Web/6-Pets/dogs.jpg"
+								class="thumbnail2 thumbnail"
+								alt="Dogs"
+								onclick="currentSlide(2, 7)"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button id="prev-portrait" aria-label="Previous Slide">&lt;</button>
+			<button id="next-portrait" aria-label="Next Slide">&gt;</button>
+		</main>
+
+		<canvas id="snowfall"></canvas>
+
+		<script src="/assets/scripts/scripts-snow.js" defer></script>
+		<script src="/assets/scripts/scripts-magazine-nav.js" defer></script>
+		<script
+			type="text/javascript"
+			src="/assets/scripts/scripts-slideshow.js"
+		></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+		<script
+			type="text/javascript"
+			src="/assets/scripts/scripts-audio-player.js"
+		></script>
+	</body>
+</html>

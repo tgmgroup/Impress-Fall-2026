@@ -1,0 +1,251 @@
+## =========================================================
+## Visual Studio Code & .NET / Multi-tool .gitignore
+## =========================================================
+
+# =========================================================
+# VS Code Environment & Extensions
+# =========================================================
+# Ignore the entire .vscode folder by default...
+.vscode/*
+
+# ...BUT keep core project settings shared with your team
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# VS Code Personal Workspace & Cache
+*.code-workspace
+.history/
+*.vsix
+
+# VS Code C# Dev Kit, OmniSharp & Roslyn Caches
+.roslyn/
+.ionide/
+.omnisharp/
+
+# VS Code Remote Containers / WSL / SSH
+.devcontainer/devcontainer-lock.json
+
+# Tooling Caches (ESLint, Prettier, Stylelint)
+.eslintcache
+.prettiercache
+.stylelintcache
+
+# =========================================================
+# User-specific & Local Environment Files
+# =========================================================
+*.suo
+*.user
+*.userosscache
+*.rsuser
+*.sln.docstates
+*.userprefs
+*.env
+.env*.local
+mono_crash.*
+
+# =========================================================
+# Build Output & Artifacts
+# =========================================================
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ebugPS/
+[Rr]elease/
+[Rr]eleasePS/
+[Rr]eleases/
+
+# Architecture output
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Aa][Rr][Mm]64[Ee][Cc]/
+bld/
+
+# Common web & package build outputs
+build/
+artifacts/
+.artifacts/
+dist/
+web-build/
+publish/
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+ClientBin/
+MSBuild_Logs/
+.builds
+
+# =========================================================
+# Compiled & Intermediate Files
+# =========================================================
+*.obj
+*.idb
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.ilk
+*.rsp
+!Directory.Build.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.pidb
+*.svclog
+*.scc
+*.vspscc
+*.vssscc
+*.binlog
+
+# Generated files
+*_i.c
+*_p.c
+*_h.h
+*.meta
+Generated\ Files/
+Generated_Code/
+orleans.codegen.cs
+
+# =========================================================
+# Other IDEs & Editors (Cleaned for team environments)
+# =========================================================
+.vs/
+.vshistory/
+**/.localhistory/
+MigrationBackup/
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.e2e
+$tf/
+
+# JetBrains / ReSharper / Rider
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# =========================================================
+# Dependency Managers
+# =========================================================
+
+# NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# Node.js / NPM / Yarn / pnpm
+node_modules/
+.ntvs_analysis.dat
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Paket & FAKE
+.paket/paket.exe
+**/.paket/paket.exe
+paket-files/
+.fake/
+**/.fake/
+
+# =========================================================
+# Testing, Coverage & Benchmarking
+# =========================================================
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+*.received.*
+BenchmarkDotNet.Artifacts/
+_Chutzpah*
+FakesAssemblies/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+.axoCover/*
+!.axoCover/settings.json
+OpenCover/
+_NCrunch_*
+.NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# =========================================================
+# Databases & Cloud Tools
+# =========================================================
+*.mdf
+*.ldf
+*.ndf
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+healthchecksdb
+
+# Cloud & Container tools
+.aws-sam
+ASALocalRun/
+csx/
+*.build.csdef
+ecf/
+rcf/
+_TeamCity*
+
+# =========================================================
+# Security & System Files
+# =========================================================
+*.pfx
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# OS Files
+.DS_Store
+Thumbs.db
+~$*
+*~
+
+# Library Rule
+*.a
+!lib.a

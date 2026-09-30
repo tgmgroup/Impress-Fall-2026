@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Impress Magazine - Fall, 2026</title>
+		<link rel="stylesheet" href="/assets/css/styles.css" />
+		<link rel="icon" type="image/x-icon" href="/assets/nav-images/logo.png" />
+		<link id="favicon" rel="shortcut icon" href="/assets/nav-images/logo.png" />
+
+		<link href="/assets/css/styles-modal.css" rel="stylesheet" />
+		<link href="/assets/css/styles-tooltip.css" rel="stylesheet" />
+		<link href="/assets/css/styles-audio-player.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="/assets/scripts/scripts.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+
+		<script>
+			(function () {
+				try {
+					const savedTheme = localStorage.getItem("theme");
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
+					if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+						document.documentElement.classList.add("dark");
+					} else if (savedTheme === "light") {
+						document.documentElement.classList.remove("dark");
+					} else {
+						// Default to dark if nothing set and system isn't dark
+						document.documentElement.classList.add("dark");
+					}
+				} catch (e) {
+					console.error("Error applying initial theme class:", e);
+				}
+			})();
+		</script>
+	</head>
+	<body>
+		<nav id="icon-nav">
+			<a
+				href="https://impress.isesaki.in"
+				aria-label="Impress Magazine Gallery"
+				class="slide-nav-trigger"
+				data-target-slide="slide-alpha"
+				>&#128213;</a
+			>
+			<a
+				href="index.html"
+				aria-label="Front Cover"
+				class="slide-nav-trigger"
+				data-target-slide="slide-beta"
+				>&#x23EA;</a
+			>
+			<a href="1.html" aria-label="1">&#x0031;</a>
+			<a href="1.html" aria-label="2">&#x0032;</a>
+			<a href="3.html" aria-label="3">&#x0033;</a>
+			<a href="3.html" aria-label="4">&#x0034;</a>
+			<a href="5.html" aria-label="5">&#x0035;</a>
+			<a href="5.html" aria-label="6">&#x0036;</a>
+			<a href="cover.html" aria-label="Back Cover">&#x23E9;</a>
+			<a href="about.html" aria-label="About">&#128209;</a>
+			<button id="theme-toggle" aria-label="Switch theme"></button>
+
+			<button id="snow-toggle" aria-label="Toggle Snowflakes">&#x2744;</button>
+		</nav>
+
+		<main id="hero">
+			<div id="container">
+				<div class="item sidebar sidebar-left"></div>
+
+				<div class="item gap-left"></div>
+
+				<div
+					class="item content-center"
+					id="page-content"
+					style="
+						background-image: url(&quot;/assets/Web/page07.webp&quot;);
+						background-size: contain;
+						background-position: center;
+						background-repeat: no-repeat;
+					"
+					data-page-number="7"
+					data-prev-page="5.html"
+					data-next-page="about.html"
+					data-landscape-bg="/assets/Web/page07.webp"
+				>
+					<div class="left-content">
+						<audio id="audio1-1" class="playondemand">
+							<source src="assets/audio/audio7-0.mp3" type="audio/mp3" />
+						</audio>
+						<audio id="audio1-2" class="playondemand">
+							<source src="assets/audio/audio7-0.mp3" type="audio/mp3" />
+						</audio>
+
+						<audio
+							id="audio1-1a"
+							class="playondemand"
+							controls
+							style="display: none"
+						>
+							<source src="assets/audio/audio7-1.mp3" type="audio/mpeg" />
+							Your browser does not support the audio element.
+						</audio>
+						<audio
+							id="audio1-2a"
+							class="playondemand"
+							controls
+							style="display: none"
+						>
+							<source src="assets/audio/audio7-2.mp3" type="audio/mpeg" />
+							Your browser does not support the audio element.
+						</audio>
+					</div>
+				</div>
+
+				<div class="item gap-right"></div>
+				<div class="item sidebar sidebar-right">
+					<button
+						class="center-items right-nav-buttons clickable"
+						type="button"
+						onClick="PlayAndShowWithNav('audio1-1', 'text1-1', 'play1-1', 'prev-portrait', 'next-portrait')"
+					>
+						<img
+							id="play1-1"
+							class="audio-button-image clickable"
+							src="/assets/nav-images/play-g79150a13d_1280.png"
+						/>
+						<h6 style="margin: auto">Closing</h6>
+					</button>
+
+					<button
+						class="center-items right-nav-buttons clickable"
+						type="button"
+						onClick="PlayAndShowWithNav('audio1-2', 'text1-2', 'play1-2', 'prev-portrait', 'next-portrait')"
+					>
+						<img
+							id="play1-2"
+							class="audio-button-image clickable"
+							src="/assets/nav-images/play-g79150a13d_1280.png"
+						/>
+						<h6 style="margin: auto">Reading Tasks</h6>
+					</button>
+
+					<form
+						action="https://drive.google.com/file/d/1IiIPJ4KNijgLjb8TSm36aI3FWITIVLNi/view"
+						method="get"
+						target="_blank"
+					>
+						<button
+							class="center-items right-nav-buttons clickable"
+							type="submit"
+						>
+							<img
+								id="link-answers"
+								class="audio-button-image clickable"
+								src="/assets/nav-images/link.png"
+							/>
+							<h6 style="margin: auto">Reading Task Answers</h6>
+						</button>
+					</form>
+
+					<form
+						action="https://in.isesaki.in/impress-fall-2026"
+						method="get"
+						target="_blank"
+					>
+						<button
+							class="center-items right-nav-buttons clickable"
+							type="submit"
+						>
+							<img
+								id="link-materials"
+								class="audio-button-image clickable"
+								src="/assets/nav-images/link.png"
+							/>
+							<h6 style="margin: auto">Materials for This Issue</h6>
+						</button>
+					</form>
+
+					<form
+						action="https://sites.google.com/isesaki-school.ed.jp/impress/impress-contests"
+						method="get"
+						target="_blank"
+					>
+						<button
+							class="center-items right-nav-buttons clickable"
+							type="submit"
+						>
+							<img
+								id="link-answers"
+								class="audio-button-image clickable"
+								src="/assets/nav-images/link.png"
+							/>
+							<h6 style="margin: auto">Haiku Contest</h6>
+						</button>
+					</form>
+
+					<form
+						action="https://sites.google.com/isesaki-school.ed.jp/impress/contact"
+						method="get"
+						target="_blank"
+					>
+						<button
+							class="center-items right-nav-buttons clickable"
+							type="submit"
+						>
+							<img
+								id="link-contact"
+								class="audio-button-image clickable"
+								src="/assets/nav-images/link.png"
+							/>
+							<h6 style="margin: auto">Contact Us</h6>
+						</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="items hidden-text" id="text1-1">
+				<div class="modal-content">
+					<div class="text-container">
+						<div class="modal-header">
+							<span
+								class="close clickable"
+								onClick="stopAudioPlayer(),ResetPlayAndShowWithNav('audio1-1', 'text1-1', 'play1-1', 'prev-portrait', 'next-portrait'), ResetPlayAndShowWithNav('audio1-1a', 'text1-1', 'play1-1a', 'prev-portrait', 'next-portrait')"
+								>&times;</span
+							>
+						</div>
+
+						<div class="modal-body">
+							<h1>Closing</h1>
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									Dreams are only the beginning.
+									<span class="tooltiptext"
+										>夢はほんの始まりに過ぎません。</span
+									>
+								</span>
+								<span class="tooltip">
+									They're an important first step, but what matters most is what
+									you do with them.
+									<span class="tooltiptext"
+										>夢は大切な第一歩ですが、最も重要なのはその夢を使って何をするかです。</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									When Walt Disney opened the doors to his first theme park, he
+									showed the world that a simple idea could become a reality
+									that helped millions find joy.
+									<span class="tooltiptext"
+										>ウォルト・ディズニーが最初のテーマパークを開園したとき、ひとつのシンプルなアイデアが何百万もの人々に喜びを届ける現実となり得ることを世界に示しました。</span
+									>
+								</span>
+								<span class="tooltip">
+									He didn't just imagine a better world; he brought it to life,
+									step by step through hard work.
+									<span class="tooltiptext"
+										>彼はただより良い世界を想像しただけではありません。努力を重ね、一歩一歩それを現実に変えたのです。</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									Through this issue of <i>Impress Magazine</i>, we tried to
+									give you new ideas, fresh expressions, and another step
+									outside the boundaries of a standard textbook.
+									<span class="tooltiptext"
+										>『Impress
+										Magazine』の今号を通じて、私たちは皆さんに新しいアイデアや新鮮な表現、そして標準的な教科書の枠を超えた次の一歩をお届けしようと努めました。</span
+									>
+								</span>
+								<span class="tooltip">
+									Learning a language isn't just about memorizing rules for a
+									test.
+									<span class="tooltiptext"
+										>言語を学ぶことは、テストのためにルールを暗記することだけではありません。</span
+									>
+								</span>
+								<span class="tooltip">
+									It is your passport to connecting with real people, sharing
+									your unique perspective, and building a future without
+									borders.
+									<span class="tooltiptext"
+										>それは、実在の人々と繋がり、自分だけの視点を共有し、国境のない未来を築くためのパスポートなのです。</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									As we end this issue, remember that everything you learned is
+									a tool for your next big adventure.
+									<span class="tooltiptext"
+										>今号を締めくくるにあたり、学んだことのすべてがあなたの次の大きな冒険のためのツールであることを忘れないでください。</span
+									>
+								</span>
+								<span class="tooltip">
+									Keep asking questions, keep creating, and never be afraid to
+									express who you are.
+									<span class="tooltiptext"
+										>質問をし続け、創造し続け、自分自身を表現することを決して恐れないでください。</span
+									>
+								</span>
+								<span class="tooltip">
+									The world is waiting to hear your story, in your own words,
+									and in English.
+									<span class="tooltiptext"
+										>世界はあなたの言葉で、そして英語で、あなたの物語を聞くのを待っています。</span
+									>
+								</span>
+							</p>
+						</div>
+
+						<div class="modal-footer">
+							<div class="audio-player">
+								<button class="audio-button" id="playPauseBtn-1">▶️</button>
+								<audio
+									id="playAudio-1"
+									src="assets/audio/audio7-1.mp3"
+									type="audio/mp3"
+								></audio>
+								<canvas class="waveform-canvas"></canvas>
+								<div class="time">
+									<span class="currentTime">0:00</span>
+									<span class="duration">0:00</span>
+								</div>
+								<div class="controls">
+									<label>🔊</label>
+									<input
+										type="range"
+										class="volume"
+										min="0"
+										max="1"
+										step="0.05"
+										value="1"
+									/>
+									<label>⏩</label>
+									<input
+										type="range"
+										class="speed"
+										min="0.5"
+										max="2"
+										step="0.05"
+										value="1"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="items hidden-text" id="text1-2">
+				<div class="modal-content">
+					<div class="text-container">
+						<div class="modal-header">
+							<span
+								class="close clickable"
+								onClick="stopAudioPlayer(),ResetPlayAndShowWithNav('audio1-2', 'text1-2', 'play1-2', 'prev-portrait', 'next-portrait'), ResetPlayAndShowWithNav('audio1-2a', 'text1-2', 'play1-2a', 'prev-portrait', 'next-portrait')"
+								>&times;</span
+							>
+						</div>
+
+						<div class="modal-body">
+							<h1>This Issue’s Reading Tasks</h1>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Page 1:</strong> Finish the puzzles!
+									<span class="tooltiptext">パズルを完成させよう！</span>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Page 2:</strong> Try to make your own limerick!
+									<span class="tooltiptext"
+										>自分だけの五行戯詩（リメリック）を作ってみよう！</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Page 3:</strong> Think about your fall vacation. Was
+									it the same as Goshi’s?
+									<span class="tooltiptext"
+										>自分の夏休みについて考えてみましょう。ゴウシの夏休みと同じでしたか？</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Page 5:</strong> Think about some dangerous but common
+									things in your life!
+									<span class="tooltiptext"
+										>あなたの身近にある、危険だけどありふれたものについて考えてみましょう！</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Page 6:</strong> Think about your most favorite pets.
+									Are they the same as Yotsuba’s?
+									<span class="tooltiptext"
+										>一番大好きなペットについて考えてみましょう。四ツ葉のペットと同じですか？</span
+									>
+								</span>
+							</p>
+
+							<p
+								style="
+									font-size: 2rem;
+									text-align: left;
+									text-indent: 1rem;
+									margin: 2rem;
+									padding: 1vh;
+									text-align: justify;
+								"
+							>
+								<span class="tooltip">
+									<strong>Back:</strong> Send us a haiku!
+									<span class="tooltiptext">俳句を送ってください！</span>
+								</span>
+							</p>
+						</div>
+
+						<div class="modal-footer">
+							<div class="audio-player">
+								<button class="audio-button" id="playPauseBtn-2">▶️</button>
+								<audio
+									id="playAudio-2"
+									src="assets/audio/audio7-2.mp3"
+									type="audio/mp3"
+								></audio>
+								<canvas class="waveform-canvas"></canvas>
+								<div class="time">
+									<span class="currentTime">0:00</span>
+									<span class="duration">0:00</span>
+								</div>
+								<div class="controls">
+									<label>🔊</label>
+									<input
+										type="range"
+										class="volume"
+										min="0"
+										max="1"
+										step="0.05"
+										value="1"
+									/>
+									<label>⏩</label>
+									<input
+										type="range"
+										class="speed"
+										min="0.5"
+										max="2"
+										step="0.05"
+										value="1"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button id="prev-portrait" aria-label="Previous Slide">&lt;</button>
+			<button id="next-portrait" aria-label="Next Slide">&gt;</button>
+		</main>
+
+		<canvas id="snowfall"></canvas>
+
+		<script src="/assets/scripts/scripts-snow.js" defer></script>
+		<script src="/assets/scripts/scripts-magazine-nav.js"></script>
+		<script
+			type="text/javascript"
+			src="/assets/scripts/scripts-audio-player.js"
+		></script>
+	</body>
+</html>
