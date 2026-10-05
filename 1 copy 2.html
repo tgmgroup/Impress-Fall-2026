@@ -171,21 +171,19 @@
 						<h6 style="margin: auto">Kuwamaru's Birthday Party</h6>
 					</button>
 
-					<form>
-						<button
-							class="center-items right-nav-buttons clickable"
-							type="submit"
-							formaction="https://www.yurugp.jp/characters/4534"
-							formtarget="_blank"
-						>
-							<img
-								id="play1-2"
-								class="audio-button-image clickable"
-								src="/assets/nav-images/link.png"
-							/>
-							<h6 style="margin: auto">Vote for Kuwamaru!</h6>
-						</button>
-					</form>
+					<button
+						class="center-items right-nav-buttons clickable"
+						type="button"
+						onClick="PlayAndShowWithNav('audio1-2', 'text1-2', 'play1-2', 'prev-portrait', 'next-portrait')"
+					>
+						<img
+							id="play1-2"
+							class="audio-button-image clickable"
+							src="/assets/nav-images/play-g79150a13d_1280.png"
+							alt="Play"
+						/>
+						<h6 style="margin: auto">Character Quiz</h6>
+					</button>
 				</div>
 			</div>
 
@@ -576,6 +574,44 @@
 								onclick="currentSlide(1, 7)"
 							/>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="items hidden-text" id="text1-2">
+				<!-- Quiz Modal Overlay -->
+				<div
+					class="modal-content-slideshow"
+					style="
+						width: 100vw;
+
+						height: 100vh;
+						padding: 0;
+						position: relative;
+					"
+				>
+					<div class="modal-header">
+						<span
+							class="close clickable"
+							onClick="ResetPlayAndShowWithNav('audio1-2','text1-2','play1-2','prev-portrait','next-portrait')"
+							>&times;</span
+						>
+					</div>
+					<div
+						class="modal-body"
+						style="
+							width: 100%;
+							height: 100%;
+							padding: 0;
+							overflow: hidden;
+							border-radius: 12px;
+						"
+					>
+						<iframe
+							id="quiz-frame"
+							src="quiz.html"
+							style="width: 100%; height: 100%; border: none"
+						></iframe>
 					</div>
 				</div>
 			</div>

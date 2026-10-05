@@ -1,0 +1,159 @@
+body {
+	font-family: "Inter", sans-serif;
+	background-color: #0f172a;
+	color: #f8fafc;
+}
+
+.font-fredoka {
+	font-family: "Fredoka", cursive, sans-serif;
+}
+
+/* Modal Overlay */
+.quiz-modal-backdrop {
+	background-color: rgba(15, 23, 42, 0.85);
+	backdrop-filter: blur(8px);
+}
+
+/* Letter Box Input Styles */
+.letter-box {
+	width: 3.2rem;
+	height: 3.8rem;
+	font-size: 1.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	border: 2px solid #334155;
+	background-color: #1e293b;
+	color: #f8fafc;
+	border-radius: 0.75rem;
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	outline: none;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+	.letter-box {
+		width: 2.3rem;
+		height: 3rem;
+		font-size: 1.25rem;
+		border-radius: 0.5rem;
+	}
+}
+
+.letter-box:focus {
+	border-color: #3b82f6;
+	box-shadow:
+		0 0 0 3px rgba(59, 130, 246, 0.3),
+		0 10px 15px -3px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px);
+}
+
+.letter-box.correct {
+	border-color: #22c55e !important;
+	background-color: #052e16 !important;
+	color: #4ade80 !important;
+	animation: bounce-small 0.4s ease-out;
+}
+
+.letter-box.incorrect {
+	border-color: #ef4444 !important;
+	background-color: #450a0a !important;
+	color: #fca5a5 !important;
+	animation: shake 0.4s ease-in-out;
+}
+
+/* Animations */
+@keyframes shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	20%,
+	60% {
+		transform: translateX(-6px);
+	}
+	40%,
+	80% {
+		transform: translateX(6px);
+	}
+}
+
+@keyframes bounce-small {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+@keyframes pop-in {
+	0% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.animate-pop-in {
+	animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Confetti Piece Animation */
+.confetti-piece {
+	position: absolute;
+	width: 10px;
+	height: 20px;
+	background: #ffd700;
+	opacity: 0.8;
+	top: -20px;
+	animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+	to {
+		transform: translateY(100vh) rotate(360deg);
+	}
+}
+
+/* Active Thumbnail Styling */
+.thumb-btn.active {
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 2px #3b82f6;
+	opacity: 1;
+}
+
+.thumb-btn.completed::after {
+	content: "\f00c";
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	background: #22c55e;
+	color: white;
+	font-size: 0.65rem;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Tooltip Custom styling */
+.tooltip-box {
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		opacity 0.3s,
+		visibility 0.3s;
+}
+.has-tooltip:hover .tooltip-box {
+	visibility: visible;
+	opacity: 1;
+}

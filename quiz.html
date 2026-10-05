@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Character Word Guessing Quiz</title>
+		<!-- Tailwind CSS CDN -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Canvas Confetti Library CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+		<!-- Google Fonts & FontAwesome Icons -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+
+		<style>
+			body {
+				font-family: "Fredoka One", sans-serif;
+
+				color: #f8fafc;
+				min-height: 80vh;
+				max-height: 90vh;
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+			}
+
+			.font-heading {
+				font-family: "Fredoka One", cursive;
+			}
+
+			/* Keyframe Shake Animation for Incorrect Input */
+			@keyframes shake {
+				0%,
+				100% {
+					transform: translateX(0);
+				}
+				20%,
+				60% {
+					transform: translateX(-6px);
+				}
+				40%,
+				80% {
+					transform: translateX(6px);
+				}
+			}
+
+			.animate-shake {
+				animation: shake 0.35s ease-in-out;
+			}
+
+			/* Custom Glassmorphism Box */
+			.glass-card {
+				background: rgba(30, 41, 59, 0.7);
+				backdrop-filter: blur(16px);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			/* Input Display Tiles */
+			.char-tile {
+				font-family: "Fredoka One", cursive;
+				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				text-transform: uppercase;
+			}
+
+			/* Tile State Colors */
+			.char-empty {
+				background-color: rgba(15, 23, 42, 0.8);
+				border-color: #475569;
+				color: #94a3b8;
+			}
+
+			.char-correct {
+				background-color: rgba(34, 197, 94, 0.25) !important;
+				border-color: #22c55e !important;
+				color: #4ade80 !important;
+				box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+			}
+
+			.char-wrong {
+				background-color: rgba(239, 68, 68, 0.25) !important;
+				border-color: #ef4444 !important;
+				color: #f87171 !important;
+				box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+			}
+
+			.char-space {
+				border: none !important;
+				background: transparent !important;
+			}
+
+			/* Custom Scrollbar for Modal */
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: rgba(15, 23, 42, 0.6);
+			}
+			::-webkit-scrollbar-thumb {
+				background: rgba(168, 85, 247, 0.5);
+			}
+		</style>
+	</head>
+	<body class="flex items-center justify-center min-h-screen p-3 sm:p-6">
+		<div
+			id="quiz-app"
+			class="w-full max-w-2xl mx-auto glass-card rounded-3xl shadow-2xl p-4 sm:p-8 relative overflow-hidden flex flex-col justify-between min-h-[800px]"
+		>
+			<!-- TOP HEADER & ACTION CONTROLS -->
+			<header
+				class="flex justify-between items-center mb-4 pb-3 border-b border-slate-700/60"
+			>
+				<div class="flex items-center gap-2">
+					<span
+						class="p-2 rounded-xl bg-purple-600/30 text-purple-400 border border-purple-500/30 text-xl"
+					>
+						<i class="fa-solid fa-gamepad"></i>
+					</span>
+					<h1
+						class="font-heading text-lg sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+					>
+						Character Quiz
+					</h1>
+				</div>
+			</header>
+
+			<!-- PROGRESS BAR SECTION -->
+			<div id="progress-container" class="mb-4">
+				<div
+					class="flex justify-between text-xs sm:text-sm font-semibold text-slate-300 mb-1"
+				>
+					<span>Progress</span>
+					<span id="progress-text" class="text-purple-400 font-bold"
+						>1 of 6</span
+					>
+				</div>
+				<div
+					class="w-full h-2.5 bg-slate-800/80 rounded-full overflow-hidden p-0.5 border border-slate-700"
+				>
+					<div
+						id="progress-bar"
+						class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-500"
+						style="width: 16.666667%"
+					></div>
+				</div>
+			</div>
+
+			<!-- MAIN QUIZ DISPLAY AREA -->
+			<main
+				id="quiz-card-view"
+				class="flex-1 flex flex-col items-center justify-center gap-4 relative my-2"
+			>
+				<!-- IMAGE DISPLAY WITH SHADOW & BADGE -->
+				<div class="relative group">
+					<div
+						class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"
+					></div>
+					<div
+						class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-slate-600/80 bg-slate-900 shadow-inner flex items-center justify-center"
+					>
+						<img
+							id="char-image"
+							src=""
+							alt="Character to guess"
+							class="w-full h-full object-cover transition duration-300 transform hover:scale-105"
+							onerror="
+								this.src =
+									'https://placehold.co/400x400/1e293b/a855f7?text=Image+Unavailable'
+							"
+						/>
+
+						<!-- Success Badge Overlay -->
+						<div
+							id="success-badge"
+							class="absolute inset-0 bg-purple-900/80 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 z-10"
+						>
+							<i
+								class="fa-solid fa-circle-check text-green-400 text-5xl mb-2 animate-bounce"
+							></i>
+							<span class="font-heading text-2xl text-white tracking-wide"
+								>CORRECT!</span
+							>
+						</div>
+					</div>
+				</div>
+
+				<!-- HINT BUTTON & HINT BOX -->
+				<div class="flex flex-col items-center w-full max-w-md gap-2 mt-1">
+					<div
+						id="hint-text"
+						class="hidden text-xs sm:text-sm text-amber-300/90 bg-amber-950/40 border border-amber-500/30 px-3 py-1.5 rounded-xl text-center animate-fade-in max-w-xs"
+					></div>
+				</div>
+
+				<!-- FREE-TEXT MAIN INPUT & VISUAL TILES -->
+				<div class="w-full max-w-md flex flex-col items-center gap-3 my-2">
+					<!-- Visual Letters Display Tiles -->
+					<div
+						id="tiles-container"
+						class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full px-2 min-h-[56px]"
+						onclick="focusFreeInput()"
+					>
+						<!-- Dynamically populated tiles -->
+					</div>
+
+					<!-- Hidden/Active Free-Text Typing Input Field -->
+					<div class="w-full max-w-sm px-2">
+						<input
+							id="free-input"
+							type="text"
+							placeholder="Type character name here..."
+							autocomplete="off"
+							spellcheck="false"
+							class="w-full px-4 py-3 bg-slate-900/90 border-2 border-purple-500/50 focus:border-purple-400 rounded-2xl text-center text-lg sm:text-xl font-bold uppercase tracking-widest text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40 transition"
+						/>
+					</div>
+				</div>
+			</main>
+
+			<!-- CONGRATULATIONS SCREEN (Hidden by default) -->
+			<div
+				id="victory-screen"
+				class="hidden flex-1 flex flex-col items-center justify-center text-center p-4 my-auto"
+			>
+				<div class="relative mb-4">
+					<div
+						class="absolute -inset-4 bg-gradient-to-r from-yellow-400 via-purple-500 to-pink-500 rounded-full blur-lg opacity-50 animate-pulse"
+					></div>
+					<div
+						class="relative w-24 h-24 sm:w-32 sm:h-32 bg-slate-800/90 border-2 border-yellow-400/80 rounded-full flex items-center justify-center shadow-2xl"
+					>
+						<i
+							class="fa-solid fa-trophy text-yellow-400 text-5xl sm:text-6xl animate-bounce"
+						></i>
+					</div>
+				</div>
+
+				<h2
+					class="font-heading text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-400 mb-2"
+				>
+					VICTORY!
+				</h2>
+				<p class="text-slate-300 text-sm sm:text-base max-w-md mb-6">
+					Amazing job! You identified all the characters correctly!
+				</p>
+
+				<div
+					class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 w-full max-w-xs mb-6 flex justify-around"
+				>
+					<div class="text-center">
+						<p class="text-xs text-slate-400 uppercase font-semibold">
+							Total Score
+						</p>
+						<p id="final-score" class="font-heading text-2xl text-purple-400">
+							5/5
+						</p>
+					</div>
+					<div class="w-px bg-slate-700"></div>
+					<div class="text-center">
+						<p class="text-xs text-slate-400 uppercase font-semibold">
+							Accuracy
+						</p>
+						<p class="font-heading text-2xl text-green-400">100%</p>
+					</div>
+				</div>
+
+				<button
+					onclick="restartQuiz()"
+					class="px-8 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-heading text-lg tracking-wider shadow-lg hover:shadow-purple-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-2"
+				>
+					<i class="fa-solid fa-rotate-right"></i> PLAY AGAIN
+				</button>
+			</div>
+		</div>
+
+		<!-- EDIT/MANAGE CHARACTERS MODAL -->
+		<div
+			id="manager-modal"
+			class="fixed inset-0 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 z-50"
+		>
+			<div
+				class="glass-card w-full max-w-xl rounded-3xl p-6 shadow-2xl border border-slate-700 flex flex-col max-h-[90vh]"
+			>
+				<div
+					class="flex justify-between items-center pb-4 border-b border-slate-700"
+				>
+					<h3
+						class="font-heading text-xl text-purple-300 flex items-center gap-2"
+					>
+						<i class="fa-solid fa-sliders"></i> Customize Quiz Items
+					</h3>
+					<button
+						onclick="closeManagerModal()"
+						class="text-slate-400 hover:text-white text-xl"
+					>
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+
+				<!-- LIST OF CHARACTERS -->
+				<div
+					id="character-list"
+					class="flex-1 overflow-y-auto my-4 space-y-3 pr-1"
+				>
+					<!-- Rendered dynamically -->
+				</div>
+
+				<!-- ADD NEW CHARACTER FORM -->
+				<form
+					id="add-char-form"
+					onsubmit="handleAddNewChar(event)"
+					class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 space-y-3"
+				>
+					<h4 class="text-xs uppercase font-bold text-slate-400 tracking-wider">
+						Add New Character
+					</h4>
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+						<input
+							id="new-name"
+							type="text"
+							placeholder="Character Name (e.g., Mario)"
+							required
+							class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-purple-500"
+						/>
+						<input
+							id="new-hint"
+							type="text"
+							placeholder="Hint (e.g., Nintendo plumber)"
+							required
+							class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-purple-500"
+						/>
+					</div>
+					<div class="flex gap-2">
+						<input
+							id="new-image"
+							type="url"
+							placeholder="Image URL (Unsplash or direct image link)"
+							required
+							class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-purple-500"
+						/>
+						<button
+							type="submit"
+							class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs sm:text-sm font-semibold transition"
+						>
+							Add
+						</button>
+					</div>
+				</form>
+
+				<div
+					class="mt-4 pt-3 border-t border-slate-700 flex justify-between items-center"
+				>
+					<button
+						onclick="resetDefaultCharacters()"
+						class="text-xs text-slate-400 hover:text-amber-400 underline"
+					>
+						Reset to Defaults
+					</button>
+					<button
+						onclick="closeManagerModal()"
+						class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition"
+					>
+						Done
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// DEFAULT QUIZ DATA
+			const DEFAULT_CHARACTERS = [
+				{
+					name: "Vegetakun",
+					hint: "This character likes local rice, vegetables, and meat.",
+					image:
+						"https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=600&q=80",
+				},
+				{
+					name: "Haniwatori",
+					hint: "Mushroom Kingdom plumber in red overalls",
+					image:
+						"https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+				},
+				{
+					name: "Mojaro",
+					hint: "The fastest blue hedgehog in the world",
+					image:
+						"https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+				},
+				{
+					name: "Gunmachan",
+					hint: "Princess of Hyrule from the famous Nintendo saga",
+					image:
+						"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+				},
+				{
+					name: "Kiratto",
+					hint: "Nine-Tails Jinchuriki who wants to become Hokage",
+					image:
+						"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+				},
+				{
+					name: "Kuwamaru",
+					hint: "Nine-Tails Jinchuriki who wants to become Hokage",
+					image:
+						"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+				},
+			];
+
+			// APP STATE VARIABLES
+			let characters = JSON.parse(localStorage.getItem("quiz_characters")) || [
+				...DEFAULT_CHARACTERS,
+			];
+			let currentIndex = 0;
+			let isTransitioning = false;
+
+			// DOM ELEMENTS
+			const quizCardView = document.getElementById("quiz-card-view");
+			const victoryScreen = document.getElementById("victory-screen");
+			const quizFooter = document.getElementById("quiz-footer");
+			const charImage = document.getElementById("char-image");
+			const tilesContainer = document.getElementById("tiles-container");
+			const freeInput = document.getElementById("free-input");
+			const hintText = document.getElementById("hint-text");
+			const hintBtn = document.getElementById("hint-btn");
+			const progressBar = document.getElementById("progress-bar");
+			const progressText = document.getElementById("progress-text");
+			const successBadge = document.getElementById("success-badge");
+			const managerModal = document.getElementById("manager-modal");
+
+			// INITIALIZE QUIZ
+			function initQuiz() {
+				currentIndex = 0;
+				isTransitioning = false;
+				victoryScreen.classList.add("hidden");
+				quizCardView.classList.remove("hidden");
+				quizFooter.classList.remove("hidden");
+				loadCharacter(currentIndex);
+			}
+
+			// LOAD CURRENT CHARACTER ITEM
+			function loadCharacter(index) {
+				if (index >= characters.length) {
+					showVictoryScreen();
+					return;
+				}
+
+				const currentChar = characters[index];
+				isTransitioning = false;
+
+				// Update Image & Reset Badges
+				charImage.src = currentChar.image;
+				successBadge.classList.add("opacity-0");
+
+				// Reset Input Field & Hints
+				freeInput.value = "";
+				freeInput.maxLength = currentChar.name.length;
+				freeInput.disabled = false;
+				hintText.classList.add("hidden");
+				hintText.innerText = `Hint: ${currentChar.hint}`;
+				hintBtn.style.display = "flex";
+
+				// Update Progress Bar
+				const total = characters.length;
+				progressText.innerText = `${index + 1} of ${total}`;
+				progressBar.style.width = `${((index + 1) / total) * 100}%`;
+
+				// Render Visual Tiles
+				renderTiles(currentChar.name, "");
+
+				// Auto-focus input
+				setTimeout(() => focusFreeInput(), 100);
+			}
+
+			// RENDER VISUAL LETTER TILES ACCORDING TO USER INPUT
+			function renderTiles(targetName, userInput) {
+				tilesContainer.innerHTML = "";
+				const targetArr = Array.from(targetName);
+				const userArr = Array.from(userInput);
+
+				let sizeClass = "w-10 h-12 text-xl sm:w-12 sm:h-14 sm:text-2xl";
+				if (targetArr.length > 8) {
+					sizeClass = "w-8 h-10 text-lg sm:w-10 sm:h-12 sm:text-xl";
+				}
+
+				targetArr.forEach((targetChar, idx) => {
+					if (targetChar === " ") {
+						// Render space separator
+						const spaceDiv = document.createElement("div");
+						spaceDiv.className =
+							"w-3 sm:w-5 h-12 char-space flex items-center justify-center";
+						tilesContainer.appendChild(spaceDiv);
+					} else {
+						// Render letter tile
+						const tile = document.createElement("div");
+						const userChar = userArr[idx] ? userArr[idx].toUpperCase() : "";
+
+						let stateClass = "char-empty";
+						if (userChar) {
+							if (userChar === targetChar.toUpperCase()) {
+								stateClass = "char-correct";
+							} else {
+								stateClass = "char-wrong animate-shake";
+							}
+						}
+
+						tile.className = `${sizeClass} char-tile border-2 rounded-xl flex items-center justify-center font-bold uppercase shadow-md transition-all ${stateClass}`;
+						tile.innerText = userChar || "";
+
+						tilesContainer.appendChild(tile);
+					}
+				});
+			}
+
+			// HANDLE FREE INPUT EVENTS
+			freeInput.addEventListener("input", (e) => {
+				if (isTransitioning) return;
+
+				const currentChar = characters[currentIndex];
+				const val = freeInput.value;
+
+				// Update tiles on every change
+				renderTiles(currentChar.name, val);
+
+				// Check if word complete
+				checkCompletion();
+			});
+
+			function focusFreeInput() {
+				if (!isTransitioning && freeInput) {
+					freeInput.focus();
+				}
+			}
+
+			// REVEAL HINT FUNCTION
+			function revealHint() {
+				hintText.classList.remove("hidden");
+			}
+
+			// CHECK IF ANSWER IS FULLY CORRECT
+			function checkCompletion() {
+				const currentChar = characters[currentIndex];
+				const targetName = currentChar.name.toUpperCase();
+				const currentInput = freeInput.value.toUpperCase();
+
+				if (currentInput === targetName) {
+					isTransitioning = true;
+					freeInput.disabled = true;
+
+					triggerSparkleCelebration();
+
+					// Show Success Overlay Badge
+					successBadge.classList.remove("opacity-0");
+
+					// Automatically advance to the next character level after 1.5s
+					setTimeout(() => {
+						currentIndex++;
+						loadCharacter(currentIndex);
+					}, 1500);
+				}
+			}
+
+			// SPARKLE & CONFETTI CELEBRATION
+			function triggerSparkleCelebration() {
+				if (typeof confetti === "function") {
+					confetti({
+						particleCount: 80,
+						spread: 70,
+						origin: { y: 0.6 },
+						colors: ["#a855f7", "#ec4899", "#3b82f6", "#eab308", "#22c55e"],
+					});
+
+					setTimeout(() => {
+						confetti({
+							particleCount: 40,
+							angle: 60,
+							spread: 55,
+							origin: { x: 0 },
+						});
+						confetti({
+							particleCount: 40,
+							angle: 120,
+							spread: 55,
+							origin: { x: 1 },
+						});
+					}, 200);
+				}
+			}
+
+			// SHOW FINAL VICTORY CONGRATULATIONS SCREEN
+			function showVictoryScreen() {
+				quizCardView.classList.add("hidden");
+				quizFooter.classList.add("hidden");
+				victoryScreen.classList.remove("hidden");
+				document.getElementById("final-score").innerText =
+					`${characters.length}/${characters.length}`;
+
+				if (typeof confetti === "function") {
+					const duration = 2.5 * 1000;
+					const animationEnd = Date.now() + duration;
+
+					(function frame() {
+						confetti({
+							particleCount: 5,
+							angle: 60,
+							spread: 55,
+							origin: { x: 0, y: 0.7 },
+						});
+						confetti({
+							particleCount: 5,
+							angle: 120,
+							spread: 55,
+							origin: { x: 1, y: 0.7 },
+						});
+
+						if (Date.now() < animationEnd) {
+							requestAnimationFrame(frame);
+						}
+					})();
+				}
+			}
+
+			// RESTART QUIZ
+			function restartQuiz() {
+				initQuiz();
+			}
+
+			// MODAL & CHARACTER MANAGER FUNCTIONS
+			function openManagerModal() {
+				renderManagerList();
+				managerModal.classList.remove("hidden");
+			}
+
+			function closeManagerModal() {
+				managerModal.classList.add("hidden");
+				if (currentIndex >= characters.length) {
+					currentIndex = 0;
+				}
+				loadCharacter(currentIndex);
+			}
+
+			function renderManagerList() {
+				const listContainer = document.getElementById("character-list");
+				listContainer.innerHTML = "";
+
+				characters.forEach((char, idx) => {
+					const item = document.createElement("div");
+					item.className =
+						"flex items-center justify-between p-3 bg-slate-800/90 border border-slate-700/80 rounded-2xl gap-3";
+					item.innerHTML = `
+          <div class="flex items-center gap-3 overflow-hidden">
+            <img src="${char.image}" class="w-10 h-10 rounded-xl object-cover border border-slate-600 flex-shrink-0" onerror="this.src='https://placehold.co/100x100/1e293b/a855f7?text=?';">
+            <div class="truncate">
+              <p class="font-bold text-sm text-purple-300 truncate">${char.name}</p>
+              <p class="text-xs text-slate-400 truncate">${char.hint}</p>
+            </div>
+          </div>
+          <button onclick="removeCharacter(${idx})" class="text-red-400 hover:text-red-300 p-2 rounded-xl hover:bg-slate-700/50 transition">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        `;
+					listContainer.appendChild(item);
+				});
+			}
+
+			function handleAddNewChar(e) {
+				e.preventDefault();
+				const name = document.getElementById("new-name").value.trim();
+				const hint = document.getElementById("new-hint").value.trim();
+				const image = document.getElementById("new-image").value.trim();
+
+				if (name && hint && image) {
+					characters.push({ name, hint, image });
+					saveCharacters();
+					renderManagerList();
+
+					document.getElementById("add-char-form").reset();
+				}
+			}
+
+			function removeCharacter(index) {
+				if (characters.length <= 1) {
+					alert("You must keep at least one character in the quiz!");
+					return;
+				}
+				characters.splice(index, 1);
+				saveCharacters();
+				renderManagerList();
+			}
+
+			function resetDefaultCharacters() {
+				characters = [...DEFAULT_CHARACTERS];
+				saveCharacters();
+				renderManagerList();
+			}
+
+			function saveCharacters() {
+				localStorage.setItem("quiz_characters", JSON.stringify(characters));
+			}
+
+			// INITIALIZE ON WINDOW LOAD
+			window.onload = function () {
+				initQuiz();
+			};
+		</script>
+	</body>
+</html>
