@@ -6,7 +6,7 @@
 const STORIES = [
 	{
 		id: 1,
-		title: { en: "The Bad Day", ja: "悪い一日" },
+		title: { en: "The Bad Day", ja: "The Bad Day (悪い一日)" },
 		icon: "fa-cloud-sun",
 		fields: [
 			{
@@ -127,7 +127,7 @@ const STORIES = [
 	},
 	{
 		id: 2,
-		title: { en: "The Visitor", ja: "訪問者" },
+		title: { en: "The Visitor", ja: "The Visitor (訪問者)" },
 		icon: "fa-rocket",
 		fields: [
 			{
@@ -247,257 +247,362 @@ const STORIES = [
 
     `,
 	},
+
 	{
 		id: 3,
-		title: { en: "Haunted Mansion Mystery", ja: "おばけ屋敷の謎" },
+		title: {
+			en: "The Halloween Teacher",
+			ja: "The Halloween Teacher (ハロウィンの先生)",
+		},
 		icon: "fa-ghost",
 		fields: [
 			{
-				id: "ghostName",
-				label: { en: "1. Ghost Name", ja: "1. おばけの名前 (Ghost Name)" },
-				placeholder: { en: "e.g. Sir Boo, Casper", ja: "例: ブー男爵" },
+				id: "subject",
+				label: { en: "1. School Subject", ja: "1. 教科 (School Subject)" },
+				placeholder: {
+					en: "e.g. English, Math, Science",
+					ja: "例: English (英語), Math (数学)",
+				},
 				bg: "bg-funPink",
 				pool: {
-					en: ["Sir Boo", "Gummy Ghost", "Phantom Whiskers"],
-					ja: ["ブー男爵", "ぷにぷにゴースト", "おばけネコ"],
+					en: ["English", "Math", "Science", "History", "PE"],
+					ja: [
+						"English (英語)",
+						"Math (数学)",
+						"Science (理科)",
+						"History (歴史)",
+						"PE (体育)",
+					],
 				},
 			},
 			{
-				id: "weather3",
-				label: { en: "2. Night Weather", ja: "2. 夜の天気 (Weather)" },
+				id: "scaryLook",
+				label: { en: "2. Scary Feature", ja: "2. 怖い特徴 (Scary Feature)" },
 				placeholder: {
-					en: "e.g. stormy, spooky foggy",
-					ja: "例: 嵐の夜、不気味な霧",
+					en: "e.g. green skin, big eyes",
+					ja: "例: green skin (緑色の肌)",
 				},
 				bg: "bg-funYellow text-funDark",
 				pool: {
-					en: ["stormy", "spooky foggy", "windy"],
-					ja: ["大嵐の夜", "不気味な濃霧", "ビュービュー吹き荒れる風"],
+					en: [
+						"green skin",
+						"red eyes",
+						"long teeth",
+						"no face",
+						"sharp claws",
+					],
+					ja: [
+						"green skin (緑色の肌)",
+						"red eyes (赤い目)",
+						"long teeth (長い歯)",
+						"no face (顔がない)",
+						"sharp claws (鋭い爪)",
+					],
 				},
 			},
 			{
-				id: "scaredSound",
-				label: { en: "3. Weird Sound", ja: "3. 変な音 (Sound)" },
+				id: "verbIng",
+				label: { en: "3. Action (-ing)", ja: "3. 動作 (~ing) (Action)" },
 				placeholder: {
-					en: "e.g. HONK, SQUEAK",
-					ja: "例: プッパー！、ギクッ！",
+					en: "e.g. floating, dancing",
+					ja: "例: floating (浮かんでいる)",
 				},
 				bg: "bg-funGreen text-funDark",
 				pool: {
-					en: ["kazoo HONK", "loud SQUEAK", "funny BURP"],
-					ja: ["カズーのプッパー音", "激しいキーキー声", "大きなゲップ"],
+					en: ["floating", "dancing", "screaming", "flying", "laughing"],
+					ja: [
+						"floating (宙に浮いている)",
+						"dancing (踊っている)",
+						"screaming (叫んでいる)",
+						"flying (飛んでいる)",
+						"laughing (笑っている)",
+					],
 				},
 			},
 			{
-				id: "hidingPlace",
-				label: { en: "4. Hiding Spot", ja: "4. 隠れ場所 (Hiding Place)" },
+				id: "object",
+				label: {
+					en: "4. Classroom Object",
+					ja: "4. 教室の道具 (Classroom Object)",
+				},
 				placeholder: {
-					en: "e.g. under the sofa",
-					ja: "例: ソファの下、クローゼット",
+					en: "e.g. textbook, chalk",
+					ja: "例: textbook (教科書), chalk (チョーク)",
 				},
 				bg: "bg-funPurple",
 				pool: {
-					en: ["under the sofa", "inside a giant clock", "in the pantry"],
-					ja: ["ソファの下", "大きな時計の中", "食品庫の中"],
+					en: ["textbook", "chalk", "eraser", "pencil", "clock"],
+					ja: [
+						"textbook (教科書)",
+						"chalk (チョーク)",
+						"eraser (消しゴム)",
+						"pencil (鉛筆)",
+						"clock (時計)",
+					],
 				},
 			},
 			{
-				id: "creepyCreature",
-				label: { en: "5. Funny Creature", ja: "5. おかしな生き物 (Creature)" },
-				placeholder: { en: "e.g. dancing skeleton", ja: "例: 踊るガイコツ" },
+				id: "feeling2",
+				label: { en: "5. Emotion / Feeling", ja: "5. 感情 (Emotion)" },
+				placeholder: {
+					en: "e.g. shocked, terrified",
+					ja: "例: shocked (ショックを受けた)",
+				},
 				bg: "bg-funBlue",
 				pool: {
-					en: ["dancing skeleton", "glowing bat", "fluffy goblin"],
-					ja: ["踊るガイコツ", "光るコウモリ", "フワフワのゴブリン"],
-				},
-			},
-			{
-				id: "favoriteSnack",
-				label: { en: "6. Snack Item", ja: "6. お気に入りのお菓子 (Snack)" },
-				placeholder: {
-					en: "e.g. chocolate chip cookies",
-					ja: "例: クッキー、ポテチ",
-				},
-				bg: "bg-orange-500",
-				pool: {
-					en: ["chocolate chip cookies", "gummy worms", "marshmallows"],
-					ja: ["チョコチップクッキー", "ミミズ型グミ", "焼きマシュマロ"],
+					en: ["shocked", "scared", "tired", "confused", "happy"],
+					ja: [
+						"shocked (ショックを受けた)",
+						"scared (怖がっている)",
+						"tired (疲れた)",
+						"confused (混乱した)",
+						"happy (幸せな)",
+					],
 				},
 			},
 		],
 		render: (v) => `
-      <p>It was a ${v.weather3} night when I walked into the old mansion. Suddenly, I heard a loud "${v.scaredSound}"!</p>
-      <p>I quickly jumped ${v.hidingPlace} to hide. That's when I met ${v.ghostName}, a ${v.creepyCreature} who was floating in the air.</p>
-      <p>Turns out, the ghost was just hungry! We sat together and shared some tasty ${v.favoriteSnack}.</p>
+      <p>Today in ${v.subject} class, it was Halloween. A new teacher came to class. But something was wrong.</p>
+      <p>The teacher had ${v.scaryLook}! During class, the teacher started ${v.verbIng} near the ceiling!</p>
+      <p>Suddenly, a ${v.object} flew across the classroom all by itself!</p>
+      <p>Everyone was so ${v.feeling2}! It was the strangest Halloween lesson ever.</p>
     `,
 	},
 	{
 		id: 4,
-		title: { en: "Chef's Crazy Kitchen", ja: "シェフのハチャメチャクッキング" },
-		icon: "fa-fire-burner",
+		title: {
+			en: "The Midnight School",
+			ja: "The Midnight School (真夜中の学校)",
+		},
+		icon: "fa-school",
 		fields: [
 			{
-				id: "chefName",
-				label: { en: "1. Chef Name", ja: "1. シェフの名前 (Chef Name)" },
-				placeholder: { en: "e.g. Chef Luigi", ja: "例: ルイージシェフ" },
+				id: "time",
+				label: { en: "1. Time of Night", ja: "1. 時間 (Time of Night)" },
+				placeholder: {
+					en: "e.g. 7:00 PM, midnight",
+					ja: "例: 7:00 PM (午後7時)",
+				},
 				bg: "bg-funPink",
 				pool: {
-					en: ["Chef Luigi", "Gordon Ram-say", "Master Pierre"],
-					ja: ["ルイージシェフ", "ムッシュ・ピエール", "クッキングパパ"],
+					en: ["7:00 PM", "8:30 PM", "midnight", "10:00 PM", "1:00 AM"],
+					ja: [
+						"7:00 PM (午後7時)",
+						"8:30 PM (午後8時半)",
+						"midnight (真夜中)",
+						"10:00 PM (午後10時)",
+						"1:00 AM (午前1時)",
+					],
 				},
 			},
 			{
-				id: "mainIngredient",
-				label: {
-					en: "2. Weird Ingredient",
-					ja: "2. 変わった食材 (Ingredient)",
-				},
+				id: "itemLeft",
+				label: { en: "2. Forgotten Item", ja: "2. 忘れた物 (Forgotten Item)" },
 				placeholder: {
-					en: "e.g. bubblegum, hot sauce",
-					ja: "例: 風船ガム、激辛ソース",
+					en: "e.g. umbrella, tablet",
+					ja: "例: umbrella (傘), tablet (タブレット)",
 				},
 				bg: "bg-funYellow text-funDark",
 				pool: {
-					en: ["bubblegum syrup", "hot sauce", "pickle juice"],
-					ja: ["風船ガムシロップ", "激辛ハバネロソース", "ピクルスの汁"],
+					en: ["umbrella", "tablet", "dictionary", "wallet", "pencil case"],
+					ja: [
+						"umbrella (傘)",
+						"tablet (タブレット)",
+						"dictionary (辞書)",
+						"wallet (財布)",
+						"pencil case (筆箱)",
+					],
 				},
 			},
 			{
-				id: "kitchenTool",
-				label: { en: "3. Kitchen Appliance", ja: "3. 調理器具 (Tool)" },
+				id: "sound",
+				label: { en: "3. Strange Sound", ja: "3. 変な音 (Strange Sound)" },
 				placeholder: {
-					en: "e.g. blender, waffle maker",
-					ja: "例: ミキサー、ワッフルメーカー",
+					en: "e.g. BOO, TAP-TAP",
+					ja: "例: TAP-TAP (カタカタ音)",
 				},
 				bg: "bg-funGreen text-funDark",
 				pool: {
-					en: ["high-speed blender", "waffle maker", "toaster"],
-					ja: ["超高速ミキサー", "ワッフルメーカー", "ポップアップトースター"],
+					en: ["TAP-TAP!", "BOO!", "CREAK!", "KNOCK-KNOCK!", "SQUEAK!"],
+					ja: [
+						"TAP-TAP! (カタカタ！)",
+						"BOO! (バァ！)",
+						"CREAK! (ギシギシ！)",
+						"KNOCK-KNOCK! (トントン！)",
+						"SQUEAK! (キーキー！)",
+					],
 				},
 			},
 			{
-				id: "emergencyAction",
-				label: { en: "4. Action Verb", ja: "4. 慌てた行動 (Action)" },
+				id: "creature",
+				label: {
+					en: "4. Scary Creature",
+					ja: "4. 怖い生き物 (Scary Creature)",
+				},
 				placeholder: {
-					en: "e.g. do a flip, scream",
-					ja: "例: 叫ぶ、バク転する",
+					en: "e.g. black cat, skeleton",
+					ja: "例: black cat (黒猫)",
 				},
 				bg: "bg-funPurple",
 				pool: {
-					en: ["do a backflip", "scream loudly", "dance wildly"],
-					ja: ["バク転する", "大声で叫ぶ", "激しく踊る"],
+					en: ["black cat", "skeleton", "vampire", "zombie", "ghost"],
+					ja: [
+						"black cat (黒猫)",
+						"skeleton (ガイコツ)",
+						"vampire (吸血鬼)",
+						"zombie (ゾンビ)",
+						"ghost (おばけ)",
+					],
 				},
 			},
 			{
-				id: "messyDisaster",
-				label: { en: "5. Messy Stuff", ja: "5. 散らかった物 (Mess)" },
+				id: "escapeVerb",
+				label: { en: "5. Action (Verb)", ja: "5. 動作・動詞 (Action)" },
 				placeholder: {
-					en: "e.g. whipped cream explosion",
-					ja: "例: 生クリームの大爆発",
+					en: "e.g. run, dash, jump",
+					ja: "例: run (走る), dash (ダッシュする)",
 				},
 				bg: "bg-funBlue",
 				pool: {
-					en: [
-						"whipped cream explosion",
-						"spaghetti fountain",
-						"melted cheese tsunami",
-					],
+					en: ["run", "dash", "scream", "jump", "escape"],
 					ja: [
-						"生クリームの大爆発",
-						"スパゲッティの噴水",
-						"とろけるチーズの津波",
+						"run (走る)",
+						"dash (ダッシュする)",
+						"scream (叫ぶ)",
+						"jump (跳ぶ)",
+						"escape (逃げる)",
 					],
 				},
 			},
 		],
 		render: (v) => `
-      <p>Welcome to Master Kitchen with ${v.chefName}! Today's secret recipe features ${v.mainIngredient}.</p>
-      <p>The chef threw everything into the ${v.kitchenTool} and turned it to maximum power. Suddenly, it started shaking uncontrollably!</p>
-      <p>${v.chefName} had to ${v.emergencyAction} as a giant ${v.messyDisaster} covered the entire kitchen! Bon Appétit!</p>
+      <p>Yesterday at ${v.time}, I went back to school because I forgot my ${v.itemLeft}.</p>
+      <p>The school building was dark and quiet. Suddenly, I heard a loud "${v.sound}" from the hallway!</p>
+      <p>I turned around and saw a giant ${v.creature} standing near the principal's office!</p>
+      <p>I didn't wait—I had to ${v.escapeVerb} out of the school as fast as I could!</p>
     `,
 	},
 	{
 		id: 5,
-		title: { en: "Galactic Space Mission", ja: "宇宙大冒険" },
-		icon: "fa-rocket",
+		title: {
+			en: "Halloween Party Trap",
+			ja: "Halloween Party Trap (ハロウィンパーティの罠)",
+		},
+		icon: "fa-mask",
 		fields: [
 			{
-				id: "alienName",
-				label: { en: "1. Astronaut Name", ja: "1. 宇宙飛行士の名前 (Name)" },
-				placeholder: { en: "e.g. Captain Zog", ja: "例: ゾグ船長" },
+				id: "costume",
+				label: { en: "1. Costume", ja: "1. 仮装 (Costume)" },
+				placeholder: {
+					en: "e.g. pumpkin, mummy",
+					ja: "例: pumpkin (カボチャ), mummy (ミイラ)",
+				},
 				bg: "bg-funPink",
 				pool: {
-					en: ["Commander Zorp", "Professor Pickle", "Barnaby Nova"],
-					ja: ["ゾルプ司令官", "ピクルス博士", "バーナビー船長"],
+					en: ["pumpkin", "mummy", "witch", "ninja", "robot"],
+					ja: [
+						"pumpkin (カボチャ)",
+						"mummy (ミイラ)",
+						"witch (魔女)",
+						"ninja (忍者)",
+						"robot (ロボット)",
+					],
 				},
 			},
 			{
-				id: "planet",
-				label: { en: "2. Alien Planet", ja: "2. 惑星の名前 (Planet)" },
+				id: "snack",
+				label: { en: "2. Snack Food", ja: "2. お菓子 (Snack Food)" },
 				placeholder: {
-					en: "e.g. Planet Marshmallow",
-					ja: "例: マシュマロ惑星",
+					en: "e.g. candy, cookies",
+					ja: "例: candy (キャンディ), cookies (クッキー)",
 				},
 				bg: "bg-funYellow text-funDark",
 				pool: {
-					en: ["Planet Marshmallow", "Sector 7G", "Xenon-B"],
-					ja: ["マシュマロ惑星", "第7銀河ゼノン", "ポテトスター"],
+					en: ["candy", "cookies", "chocolate", "popcorn", "donuts"],
+					ja: [
+						"candy (キャンディ)",
+						"cookies (クッキー)",
+						"chocolate (チョコレート)",
+						"popcorn (ポップコーン)",
+						"donuts (ドーナツ)",
+					],
 				},
 			},
 			{
-				id: "alienFood",
-				label: { en: "3. Space Snack", ja: "3. 宇宙のおやつ (Space Food)" },
+				id: "place",
+				label: {
+					en: "3. Place in School",
+					ja: "3. 校内の場所 (Place in School)",
+				},
 				placeholder: {
-					en: "e.g. moon cheese, tacos",
-					ja: "例: 月のチーズ、宇宙せんべい",
+					en: "e.g. gym, library",
+					ja: "例: gym (体育館), library (図書室)",
 				},
 				bg: "bg-funGreen text-funDark",
 				pool: {
-					en: ["moon cheese", "cosmic popcorn", "starlight candy"],
-					ja: ["月のチーズ", "コズミック・ポップコーン", "星くずキャンディ"],
+					en: ["gym", "library", "music room", "science room", "cafeteria"],
+					ja: [
+						"gym (体育館)",
+						"library (図書室)",
+						"music room (音楽室)",
+						"science room (理科室)",
+						"cafeteria (食堂)",
+					],
 				},
 			},
 			{
-				id: "spaceAction",
-				label: { en: "4. Space Action", ja: "4. 宇宙での行動 (Action)" },
+				id: "monster",
+				label: {
+					en: "4. Monster Name",
+					ja: "4. モンスターの名前 (Monster Name)",
+				},
 				placeholder: {
-					en: "e.g. high-five, tickle",
-					ja: "例: ハイタッチ、ダンス",
+					en: "e.g. Dracula, Frankenstein",
+					ja: "例: Dracula (ドラキュラ)",
 				},
 				bg: "bg-funPurple",
 				pool: {
-					en: ["high-five", "tickle", "photograph"],
-					ja: ["ハイタッチする", "くすぐる", "記念撮影する"],
+					en: [
+						"Dracula",
+						"Frankenstein",
+						"Wolfman",
+						"Jack-o'-Lantern",
+						"Slime",
+					],
+					ja: [
+						"Dracula (ドラキュラ)",
+						"Frankenstein (フランケンシュタイン)",
+						"Wolfman (オオカミ男)",
+						"Jack-o'-Lantern (ジャック・オー・ランタン)",
+						"Slime (スライム)",
+					],
 				},
 			},
 			{
-				id: "weirdMonster",
-				label: { en: "5. Weird Alien", ja: "5. 変なエイリアン (Alien)" },
-				placeholder: { en: "e.g. giant gummy bear", ja: "例: 巨大グミベア" },
+				id: "feeling3",
+				label: { en: "5. Emotion / Feeling", ja: "5. 感情 (Emotion)" },
+				placeholder: {
+					en: "e.g. excited, surprised",
+					ja: "例: excited (興奮する)",
+				},
 				bg: "bg-funBlue",
 				pool: {
-					en: ["giant gummy bear", "flying octopus", "glowing space cat"],
-					ja: ["巨大グミベア", "空飛ぶタコ", "光る宇宙ネコ"],
-				},
-			},
-			{
-				id: "spaceSuitItem",
-				label: { en: "6. Gear / Item", ja: "6. 持ち物・装備 (Gear)" },
-				placeholder: {
-					en: "e.g. laser blaster, mop",
-					ja: "例: レーザー銃、デッキブラシ",
-				},
-				bg: "bg-orange-500",
-				pool: {
-					en: ["laser blaster", "super mop", "disco ball"],
-					ja: ["光線銃", "魔法のモップ", "ディスコボール"],
+					en: ["excited", "surprised", "scared", "happy", "nervous"],
+					ja: [
+						"excited (興奮する)",
+						"surprised (驚いた)",
+						"scared (怖がっている)",
+						"happy (幸せな)",
+						"nervous (緊張する)",
+					],
 				},
 			},
 		],
 		render: (v) => `
-      <p>Greetings Earthlings! Today Astronaut ${v.alienName} launched a rocket bound for ${v.planet}.</p>
-      <p>During the journey, the crew stopped to eat some delicious ${v.alienFood}. Suddenly, a ${v.weirdMonster} appeared outside!</p>
-      <p>Without hesitating, Astronaut ${v.alienName} grabbed a ${v.spaceSuitItem} and decided to ${v.spaceAction} with the alien. Mission accomplished!</p>
+      <p>Last Friday was Halloween! I wore my favorite ${v.costume} costume to the school party.</p>
+      <p>We ate lots of delicious ${v.snack} and danced in the ${v.place}.</p>
+      <p>Suddenly, the music stopped and ${v.monster} appeared on the stage!</p>
+      <p>Everyone was so ${v.feeling3}, but then the monster started dancing! It was the best Halloween party ever.</p>
     `,
 	},
 ];
