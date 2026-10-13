@@ -202,6 +202,8 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: auto auto;
 		height: auto;
+		min-height: 0; /* Critical fix for flex child scrolling */
+		max-height: 100%;
 	}
 	/* Image styling */
 	.slide-image {
@@ -231,6 +233,7 @@
 		display: block;
 		padding: 6% 5%;
 		min-height: max-content;
+		max-height: 90vh;
 		height: auto;
 		text-align: center;
 	}
