@@ -50,7 +50,7 @@
 	--text-color: #333333; /* Dark text for light mode */
 	--nav-bg: #e0e0e0;
 	--nav-button-background-color: rgba(255, 255, 255, 0.845);
-	--nav-bg-image: linear-gradient(203deg, #fef7bc 0%, #574901 90%);
+	--nav-bg-image: linear-gradient(203deg, #fee0bc 0%, #572f01 90%);
 	--nav-icon-color: #1a1201;
 	--link-text: #181814;
 	--link-hover-bg: #ffffffc2;
@@ -93,7 +93,7 @@ html.dark {
 	--text-color: #e0e0e0; /* Light text for dark mode */
 	--nav-bg: #2c2c2c;
 	--nav-button-background-color: rgba(255, 255, 255, 0.308);
-	--nav-bg-image: linear-gradient(203deg, #0d0600 0%, #686015 90%);
+	--nav-bg-image: linear-gradient(203deg, #0d0600 0%, #81560c 90%);
 	--nav-icon-color: #edebd3;
 	--link-text: #fee8c2;
 	--link-hover-bg: #000000ac;
